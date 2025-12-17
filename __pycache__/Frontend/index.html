@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SHL Assessment Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        input, button {
+            margin: 8px 0;
+            padding: 8px;
+            width: 300px;
+        }
+        button {
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<h2>SHL Assessment Recommendation Engine</h2>
+
+<input id="job_role" placeholder="Job Role (e.g. Data Analyst)">
+<br>
+
+<input id="skills" placeholder="Skills (e.g. python sql)">
+<br>
+
+<input id="experience" placeholder="Experience (Entry/Mid/Senior)">
+<br>
+
+<input id="duration" type="number" placeholder="Max Duration (minutes)">
+<br>
+
+<button onclick="getRecommendations()">Get Recommendations</button>
+
+<div id="output"></div>
+
+<script>
+function getRecommendations() {
+    const data = {
+        job_role: document.getElementById("job_role").value,
+        skills: document.getElementById("skills").value,
+        experience: document.getElementById("experience").value,
+        max_duration: Number(document.getElementById("duration").value)
+    };
+
+    fetch("http://127.0.0.1:5000/recommend", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+        let html = "<h3>Recommended Assessments</h3>";
+        result.forEach(item => {
+            html += `
+                <div class="result">
+                    <strong>${item.assessment_name}</strong><br>
+                    Skills: ${item.skills}<br>
+                    Duration: ${item.duration} minutes<br>
+                    Experience: ${item.experience_level}<br>
+                    Score: ${item.similarity_score.toFixed(2)}
+                </div>
+            `;
+        });
+        document.getElementById("output").innerHTML = html;
+    })
+    .catch(error => {
+        document.getElementById("output").innerHTML = "Error connecting to API";
+        console.error(error);
+    });
+}
+</script>
+
+</body>
+</html>

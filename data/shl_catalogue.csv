@@ -1,0 +1,9 @@
+assessment_id,assessment_name,skills,job_role,experience_level,duration,description
+A1,Cognitive Ability Test,logical reasoning;problem solving,Software Engineer,Entry,30,Measures logical thinking and problem-solving ability
+A2,Java Programming Test,java;data structures;algorithms,Backend Developer,Mid,45,Evaluates Java programming and data structures knowledge
+A3,Personality Questionnaire,communication;teamwork;adaptability,Any,Entry,20,Assesses personality traits and workplace behavior
+A4,Python Coding Test,python;algorithms;data analysis,Data Analyst,Entry,40,Tests Python programming and analytical skills
+A5,Leadership Assessment,leadership;decision making;people management,Manager,Senior,60,Measures leadership style and managerial capability
+A6,SQL Skills Test,sql;database;query optimization,Data Analyst,Entry,30,Evaluates SQL querying and database knowledge
+A7,Full Stack Developer Test,html;css;javascript;react,Full Stack Developer,Mid,50,Assesses front-end and full stack development skills
+
