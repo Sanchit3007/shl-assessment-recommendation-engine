@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-engine = SHLRecommender("data/shl_catalog.csv")
+engine = SHLRecommender("data/shl_catalogue.csv")
 
 @app.route("/")
 def home():
